@@ -23,7 +23,7 @@ const App: React.FC = () => {
           Aceita sair comigo?
         </h2>
         <p className="font-epilogue text-[#EED5D2] text-base sm:text-lg font-medium leading-normal text-center mt-4">
-          Tenho pensado bastante em nossos momentos juntos... e gostaria muito de repetir a dose. Vamos nos encontrar de
+          Oi Hivia, tenho pensado bastante em nossos momentos juntos... e gostaria muito de repetir a dose. Vamos nos encontrar de
           novo?
         </p>
         <div className={`flex gap-2 mt-6 ${isSwapped ? 'flex-row-reverse' : ''}`}>
