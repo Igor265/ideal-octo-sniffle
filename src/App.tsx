@@ -17,7 +17,7 @@ const App: React.FC = () => {
   return (
     <div className="bg-[#FFC0CB] min-h-screen flex justify-center items-center p-4 sm:p-10">
       <div
-        className="w-full max-w-lg flex flex-col justify-center items-center bg-[url('./assets/fundo.svg')] bg-cover bg-center bg-no-repeat rounded-2xl p-6 sm:p-10">
+        className="w-full max-w-lg flex flex-col justify-center items-center bg-[url('/ideal-octo-sniffle/assets/fundo.svg')] bg-cover bg-center bg-no-repeat rounded-2xl p-6 sm:p-10">
         <h2
           className="font-epilogue font-bold text-[#EED5D2] text-3xl sm:text-5xl leading-tight tracking-[-0.033em] text-center">
           Aceita sair comigo?
