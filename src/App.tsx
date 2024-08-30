@@ -1,34 +1,60 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import React, { useEffect, useRef, useState } from 'react';
 
-function App() {
-  const [count, setCount] = useState(0)
+const App: React.FC = () => {
+  const [isSwapped, setIsSwapped] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  const handleNoClick = () => {
+    setIsSwapped(!isSwapped);
+  };
+
+  const handleYesClick = () => {
+    window.open('https://wa.me/31985232524?text=Oi%20gatinho%20vamos%20nos%20encontrar%20domingo!', '_blank');
+    if (audioRef.current && !isPlaying) {
+      audioRef.current.play().catch(error => {
+        console.error('Erro ao tentar tocar a música:', error);
+      });
+      setIsPlaying(true);
+    }
+  };
+
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.volume = 0.05;
+    }
+  }, []);
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
+    <div className="bg-[#FFC0CB] min-h-screen flex justify-center items-center p-4 sm:p-10">
+      <div
+        className="w-full max-w-lg flex flex-col justify-center items-center bg-[url('/src/assets/fundo.svg')] bg-cover bg-center bg-no-repeat rounded-2xl p-6 sm:p-10">
+        <h2
+          className="font-epilogue font-bold text-[#EED5D2] text-3xl sm:text-5xl leading-tight tracking-[-0.033em] text-center">
+          Aceita sair comigo?
+        </h2>
+        <p className="font-epilogue text-[#EED5D2] text-base sm:text-lg font-medium leading-normal text-center mt-4">
+          Tenho pensado bastante em nossos momentos juntos... e gostaria muito de repetir a dose. Vamos nos encontrar de
+          novo?
         </p>
+        <div className={`flex gap-2 mt-6 ${isSwapped ? 'flex-row-reverse' : ''}`}>
+          <button
+            onClick={handleYesClick}
+            className="flex min-w-[84px] max-w-[200px] sm:max-w-[480px] cursor-pointer items-center justify-center overflow-hidden bg-[#ed5e82] rounded-full h-10 px-4 text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-[#d94b6b] hover:text-[#f4f0f1]">
+            <span className="truncate font-epilogue">Sim</span>
+          </button>
+          <button
+            onClick={handleNoClick}
+            className="flex min-w-[84px] max-w-[200px] sm:max-w-[480px] cursor-pointer items-center justify-center overflow-hidden bg-[#f4f0f1] rounded-full h-10 px-4 text-[#181113] text-sm font-bold leading-normal tracking-[0.015em] hover:bg-[#e0dcdc] hover:text-[#181113]">
+            <span className="truncate font-epilogue">Não</span>
+          </button>
+        </div>
+        <audio ref={audioRef} src="/src/assets/i-wanna-be-yours.mp3" className="hidden"/>
+        <p className="text-sm font-normal leading-normal pt-4 text-center">❤️</p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    </div>
 
-export default App
+  );
+};
+
+export default App;
