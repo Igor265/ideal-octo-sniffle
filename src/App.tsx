@@ -1,29 +1,18 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 
 const App: React.FC = () => {
   const [isSwapped, setIsSwapped] = useState(false);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const handleNoClick = () => {
     setIsSwapped(!isSwapped);
   };
 
   const handleYesClick = () => {
+    const audio = new Audio('/ideal-octo-sniffle/assets/i-wanna-be-yours.mp3');
+    audio.volume = 0.05;
+    audio.play()
     window.open('https://wa.me/31985232524?text=Oi%20gatinho%20vamos%20nos%20encontrar%20domingo!', '_blank');
-    if (audioRef.current && !isPlaying) {
-      audioRef.current.play().catch(error => {
-        console.error('Erro ao tentar tocar a música:', error);
-      });
-      setIsPlaying(true);
-    }
   };
-
-  useEffect(() => {
-    if (audioRef.current) {
-      audioRef.current.volume = 0.05;
-    }
-  }, []);
 
   return (
     <div className="bg-[#FFC0CB] min-h-screen flex justify-center items-center p-4 sm:p-10">
@@ -49,7 +38,6 @@ const App: React.FC = () => {
             <span className="truncate font-epilogue">Não</span>
           </button>
         </div>
-        <audio ref={audioRef} src="./assets/i-wanna-be-yours.mp3" className="hidden"/>
         <p className="text-sm font-normal leading-normal pt-4 text-center">❤️</p>
       </div>
     </div>
