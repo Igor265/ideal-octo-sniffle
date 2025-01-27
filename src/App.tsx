@@ -60,7 +60,8 @@ const App: React.FC = () => {
       </div>
 
       <iframe
-        className="w-full max-w-3xl h-auto"
+        className="w-full max-w-3xl"
+        height="380"
         src="https://www.youtube.com/embed/nyuo9-OjNNg"
         title="I Wanna Be Yours"
         frameBorder="0"
