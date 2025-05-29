@@ -6,7 +6,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
     const calcularTempoDecorrido = () => {
-      const dataInicial = new Date('2024-07-04');
+      const dataInicial = new Date('2025-05-24');
       const agora = new Date().getTime();
       const dataInicialTimestamp = dataInicial.getTime();
       const diferencaMs = agora - dataInicialTimestamp;
