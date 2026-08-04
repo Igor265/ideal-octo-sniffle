@@ -1,3 +1,34 @@
+export interface TempoDecorrido {
+  anos: number;
+  meses: number;
+  dias: number;
+  horas: number;
+  minutos: number;
+  segundos: number;
+}
+
+/**
+ * Versão estruturada de {@link formatTempoDecorrido}: reaproveita exatamente o
+ * mesmo cálculo, apenas expondo cada unidade como número para renderizar cards.
+ */
+export const getTempoDecorrido = (diferencaMs: number): TempoDecorrido => {
+  const segundos = Math.floor(diferencaMs / 1000);
+  const minutos = Math.floor(segundos / 60);
+  const horas = Math.floor(minutos / 60);
+  const dias = Math.floor(horas / 24);
+  const anos = Math.floor(dias / 365);
+  const meses = Math.floor(dias / 30);
+
+  return {
+    anos,
+    meses: meses % 12,
+    dias: dias % 30,
+    horas: horas % 24,
+    minutos: minutos % 60,
+    segundos: segundos % 60,
+  };
+};
+
 export const formatTempoDecorrido = (diferencaMs: number): string => {
   const segundos = Math.floor(diferencaMs / 1000);
   const minutos = Math.floor(segundos / 60);
