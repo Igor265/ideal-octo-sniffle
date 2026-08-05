@@ -42,7 +42,7 @@ const App: React.FC = () => {
     <>
       <Background />
 
-      <main className="relative flex min-h-screen flex-col items-center justify-center gap-16 px-5 py-20 sm:gap-20 sm:px-8 sm:py-24">
+      <main className="relative flex h-[100svh] flex-col items-center justify-center gap-[clamp(0.85rem,3vh,2rem)] overflow-hidden px-5 py-[clamp(0.9rem,3vh,2rem)] sm:px-8">
         {/* Hero */}
         <motion.header
           initial={{ opacity: 0, y: 28, filter: 'blur(8px)' }}
@@ -50,10 +50,10 @@ const App: React.FC = () => {
           transition={{ duration: 1, ease: easeOut }}
           className="max-w-2xl text-center"
         >
-          <p className="mb-5 text-[0.7rem] font-medium uppercase tracking-[0.4em] text-rose-deep">
+          <p className="mb-[clamp(0.4rem,1.4vh,1.25rem)] text-[0.65rem] font-medium uppercase tracking-[0.4em] text-rose-deep sm:text-[0.7rem]">
             desde 04 . 07 . 2024
           </p>
-          <h1 className="font-serif text-3xl font-medium leading-[1.25] text-ink sm:text-4xl md:text-5xl">
+          <h1 className="font-serif font-medium leading-[1.2] text-ink text-[clamp(1.3rem,1.4vh+2.1vw,2.6rem)]">
             Desde o dia em que você entrou na minha vida,
             <br className="hidden sm:block" />{' '}
             <span className="italic text-rose-deep">cada segundo</span> faz tudo
@@ -69,7 +69,7 @@ const App: React.FC = () => {
           variants={{
             show: { transition: { staggerChildren: 0.09, delayChildren: 0.3 } },
           }}
-          className="grid w-full max-w-4xl grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-6"
+          className="grid w-full max-w-4xl grid-cols-3 gap-2.5 sm:gap-3.5 lg:grid-cols-6"
         >
           {UNIDADES.map(({ key, label }) => (
             <CountdownCard
@@ -84,15 +84,14 @@ const App: React.FC = () => {
         {/* Fecho romântico */}
         <motion.section
           initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 0.9, ease: easeOut }}
-          className="max-w-xl space-y-1 text-center"
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.55, ease: easeOut }}
+          className="max-w-xl text-center"
         >
           {FECHO.map((linha, i) => (
             <p
               key={i}
-              className="font-serif text-lg italic leading-relaxed text-ink/80 sm:text-xl"
+              className="font-serif italic leading-snug text-ink/80 text-[clamp(0.8rem,1vh+0.55vw,1.15rem)]"
             >
               {linha}
             </p>
@@ -101,16 +100,6 @@ const App: React.FC = () => {
 
         {/* Player de vidro */}
         <MusicPlayer />
-
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1, delay: 0.2 }}
-          className="text-xs tracking-[0.3em] text-rose-deep/70"
-        >
-          ♡
-        </motion.p>
       </main>
     </>
   );

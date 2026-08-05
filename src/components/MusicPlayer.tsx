@@ -8,12 +8,11 @@ const MusicPlayer: React.FC = () => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.4 }}
-      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-      className="mx-auto w-full max-w-md"
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
+      className="mx-auto w-full max-w-[min(22rem,80vw)]"
     >
-      <div className="rounded-[1.75rem] border border-white/60 bg-white/40 p-3 shadow-[0_12px_40px_-16px_rgba(201,154,148,0.4)] backdrop-blur-xl">
+      <div className="rounded-[1.5rem] border border-white/60 bg-white/40 p-2 shadow-[0_12px_40px_-16px_rgba(201,154,148,0.4)] backdrop-blur-xl sm:rounded-[1.75rem] sm:p-2.5">
         <div className="overflow-hidden rounded-2xl">
           <iframe
             className="aspect-video w-full"
